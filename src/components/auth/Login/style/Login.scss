@@ -53,6 +53,11 @@
             outline: none;
         }
     }
+    .error{
+        color: red;
+        font-weight: 700;
+        font-size: 14px;
+    }
 
     button{
         background-color: #353935;
@@ -88,6 +93,15 @@ h1{
         form{
             width: 90%;
             font-size: 14px;
+            padding: 20px;
+            .inner_form{
+                label{
+                    font-size: 16px;
+                }
+                input{
+                    font-size: 14px;
+                }
+            }
         }
     }
 }
