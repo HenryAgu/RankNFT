@@ -66,7 +66,7 @@ const Home = () => {
     // Simulate a 2-second loading delay
     setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 3500);
   }, []);
 
   //   Handle on drag end
