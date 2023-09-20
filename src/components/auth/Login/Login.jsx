@@ -29,7 +29,7 @@ const value = `/gallery/${id}`
       console.log(error);
     });
 
-    if (email === "admin@example.com" && password === "1Password") {
+    if (email === "user@example.com" && password === "1Password") {
       navigate(value)
     }else{
       setErrorMessage(true)
