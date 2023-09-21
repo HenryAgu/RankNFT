@@ -42,14 +42,14 @@ npm run dev
 4. Open your web browser and navigate to http://localhost:5173/ to use RankNFT locally.
 
 Usage
-- Drag and drop your NFT images onto the RankNFT interface.
-- Rearrange your NFTs by simply dragging them to your desired position.
-- Enjoy a customized and organized NFT gallery.
+## Rearrange your NFTs by simply dragging them to your desired position.
+
 Here is a video of how it is done below:
 ![NFT Rank - Google Chrome 2023-09-21 11-25-15](https://github.com/HenryAgu/RankNFT/assets/74037448/ce321412-db36-478d-88cf-6062ba184058)
 
 
-- Search for images based on their name
+## Search for images based on their name
+
 Here is a video of how it is done below:
 ![Vite + React - Google Chrome 2023-09-19 12-47-07](https://github.com/HenryAgu/RankNFT/assets/74037448/a7a8425d-3204-4624-ab34-f59b6e6ae580)
 
