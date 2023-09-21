@@ -130,6 +130,7 @@ main {
 // Small screens
 @media (max-width: 480px) {
   main {
+    width: 98%;
     .search{
       width: 100%;
     }
