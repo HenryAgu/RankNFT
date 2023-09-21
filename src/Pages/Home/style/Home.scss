@@ -18,7 +18,7 @@ main {
       outline: none;
       font-family: "DM Sans", sans-serif;
       font-size: 16px;
-      color: #36454F;
+      color: #36454f;
     }
   }
   .loader {
@@ -112,7 +112,7 @@ main {
 // medium screens
 @media (max-width: 991px) {
   main {
-    .search{
+    .search {
       width: 50%;
     }
     section {
@@ -130,7 +130,31 @@ main {
 // Small screens
 @media (max-width: 480px) {
   main {
-    .search{
+    .search {
+      width: 100%;
+    }
+    section {
+      width: 95%;
+      margin: 50px auto;
+
+      h1 {
+        font-size: 28px;
+      }
+      .container {
+        grid-template-columns: 1fr;
+        .image_container {
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 360px) and (max-height: 760px) {
+  main {
+    .search {
       width: 100%;
     }
     section {
