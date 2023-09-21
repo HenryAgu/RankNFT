@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate,useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 // firebase
 import { auth } from "../../../firebase";
@@ -8,31 +8,29 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 // stylesheet
 import "./style/Login.scss";
 
-const Login = () => {
+const Login = ({setUser}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(false);
 
-const navigate = useNavigate();
-const params = useParams();
+  const navigate = useNavigate();
 
-const randomNumber = Math.floor(Math.random() * 100) + 1;
-const id = randomNumber;
-const value = `/gallery/${id}`
-
-  const handleLogIn = (e) => {
+  const handleLogIn = async (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password).then((useCredential) => {
-      console.log(useCredential);
-    }).catch((error) => {
-      console.error(error);
-      console.log(error);
-    });
+    signInWithEmailAndPassword(auth, email, password)
+      .then((useCredential) => {
+        console.log(useCredential);
+      })
+      .catch((error) => {
+        console.error(error);
+        console.log(error);
+      });
 
     if (email === "user@example.com" && password === "1Password") {
-      navigate(value)
-    }else{
-      setErrorMessage(true)
+      setUser({email: email, password: password});
+      navigate("/gallery");
+    } else {
+      setErrorMessage(true);
     }
   };
   return (
@@ -60,9 +58,15 @@ const value = `/gallery/${id}`
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        {errorMessage ? <div className="error">Invalid Email or Password</div>: null}
+        {errorMessage ? (
+          <div className="error">Invalid Email or Password</div>
+        ) : null}
         <button type="submit">Login</button>
       </form>
+      <div className="login_details">
+        <p><b>Email: </b>user@example.com</p>
+        <p><b>Password: </b>1Password</p>
+      </div>
     </div>
   );
 };

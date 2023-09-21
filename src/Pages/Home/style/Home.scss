@@ -1,7 +1,26 @@
 // DM Sans Google Link
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100;9..40,200;9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900;9..40,1000&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100;9..40,200;9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900;9..40,1000&display=swap");
 
 main {
+  width: 85%;
+  margin: 30px auto;
+  margin-bottom: 50px;
+  .search {
+    display: flex;
+    justify-content: right;
+    width: 30%;
+    margin: auto;
+    input {
+      width: 100%;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: 1px solid #36454f;
+      outline: none;
+      font-family: "DM Sans", sans-serif;
+      font-size: 16px;
+      color: #36454F;
+    }
+  }
   .loader {
     margin: 250px auto;
     border: 8px solid #3498db; /* Loader color */
@@ -22,17 +41,17 @@ main {
   }
 
   section {
-    width: 85%;
+    width: 100%;
     background: #40475c;
     border-radius: 12px;
     padding: 50px;
-    margin: 100px auto;
+    margin: 50px auto;
 
-    h1{
+    h1 {
       font-weight: bolder;
-    padding-bottom: 30px;
+      padding-bottom: 30px;
       color: #fff;
-      font-family: 'DM Sans', sans-serif;
+      font-family: "DM Sans", sans-serif;
       font-size: 40px;
     }
 
@@ -51,7 +70,7 @@ main {
           outline: none;
           border-radius: 20px;
         }
-        .nft_card{
+        .nft_card {
           display: flex;
           flex-direction: column;
           row-gap: 20px;
@@ -62,14 +81,13 @@ main {
           padding: 20px;
           transition: all 0.2s ease-in;
 
-          
           &:hover {
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
           }
-          .nft_content{
-            h2{
+          .nft_content {
+            h2 {
               text-align: center;
-              font-family: 'DM Sans', sans-serif;
+              font-family: "DM Sans", sans-serif;
             }
           }
         }
@@ -81,49 +99,55 @@ main {
 //  Responsive starts here
 // large screens
 @media (max-width: 1280px) {
-main{
-  section {
-    width: 90%;
-    .container {
-      gap: 30px;
-    }
-  }
-}
-}
-
-// medium screens
-@media (max-width: 991px) {
-main{
-  section {
-    padding: 25px;
-    h1{
-      text-align: center;
-    }
-    .container {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-}
-}
-
-// Small screens
-@media (max-width: 480px) {
-main{
-  section {
-    width: 95%;
-    margin: 50px auto;
-
-    h1{
-      font-size: 28px;
-    }
-    .container {
-      grid-template-columns: 1fr;
-      .image_container {
-        img {
-          width: 100%;
-        }
+  main {
+    section {
+      width: 90%;
+      .container {
+        gap: 30px;
       }
     }
   }
 }
+
+// medium screens
+@media (max-width: 991px) {
+  main {
+    .search{
+      width: 50%;
+    }
+    section {
+      padding: 25px;
+      h1 {
+        text-align: center;
+      }
+      .container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+}
+
+// Small screens
+@media (max-width: 480px) {
+  main {
+    .search{
+      width: 100%;
+    }
+    section {
+      width: 95%;
+      margin: 50px auto;
+
+      h1 {
+        font-size: 28px;
+      }
+      .container {
+        grid-template-columns: 1fr;
+        .image_container {
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
 }

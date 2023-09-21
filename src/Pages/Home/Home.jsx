@@ -16,6 +16,8 @@ import image7 from "./images/image7.jpg";
 import image8 from "./images/image8.jpg";
 
 const Home = () => {
+  const [search, setSearch] = useState("");
+  console.log(search);
   // images
   const images = [
     {
@@ -36,7 +38,7 @@ const Home = () => {
     {
       id: "nft4",
       image: image4,
-      name: "Covid Zombie"
+      name: "Covid Zombie",
     },
     {
       id: "nft5",
@@ -80,11 +82,18 @@ const Home = () => {
 
   return (
     <main>
+      <div className="search">
+        <input
+          type="text"
+          placeholder="Search"
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
       {isLoading ? (
         <div className="loader"></div>
       ) : (
         <section>
-          <h1>Henry's Upcoming Projects</h1>
+          <h1>Henry's NFT Images</h1>
           <DragDropContext onDragEnd={handleOnDragEnd}>
             <Droppable droppableId="container">
               {(provided) => (
@@ -93,31 +102,37 @@ const Home = () => {
                   {...provided.droppableProps}
                   ref={provided.innerRef}
                 >
-                  {characters.map((image, index) => {
-                    return (
-                      <Draggable
-                        key={image.id}
-                        draggableId={image.id}
-                        index={index}
-                      >
-                        {(provided) => (
-                          <li
-                            className="image_container"
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                            ref={provided.innerRef}
-                          >
-                            <div className="nft_card">
-                              <img src={image.image} alt="" />
-                              <div className="nft_content">
-                                <h2>{image.name}</h2>
+                  {characters
+                    .filter((image) => {
+                      return search.toLocaleLowerCase() === ""
+                        ? image
+                        : image.name.toLocaleLowerCase().includes(search);
+                    })
+                    .map((image, index) => {
+                      return (
+                        <Draggable
+                          key={image.id}
+                          draggableId={image.id}
+                          index={index}
+                        >
+                          {(provided) => (
+                            <li
+                              className="image_container"
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                              ref={provided.innerRef}
+                            >
+                              <div className="nft_card">
+                                <img src={image.image} alt="" />
+                                <div className="nft_content">
+                                  <h2>{image.name}</h2>
+                                </div>
                               </div>
-                            </div>
-                          </li>
-                        )}
-                      </Draggable>
-                    );
-                  })}
+                            </li>
+                          )}
+                        </Draggable>
+                      );
+                    })}
                   {provided.placeholder}
                 </ul>
               )}

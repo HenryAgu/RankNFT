@@ -45,6 +45,10 @@ Usage
 - Drag and drop your NFT images onto the RankNFT interface.
 - Rearrange your NFTs by simply dragging them to your desired position.
 - Enjoy a customized and organized NFT gallery.
+Here is a video of how it is done below:
+
+
+- Search for images based on their name
 
 # Developer
 
