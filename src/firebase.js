@@ -11,11 +11,11 @@ const firebaseConfig = {
   projectId: "ranknft-d5039",
   storageBucket: "ranknft-d5039.appspot.com",
   messagingSenderId: "625761567991",
-  appId: "1:625761567991:web:ec1fe4a6f9bf2308e23ff2",
+  appId: "1:625761567991:web:ec1fe4a6f9bf2308e23ff2"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
 // Initialize Firebase Authentication and get a reference to the service
-export const  auth = getAuth(app);
+export const auth = getAuth(app); 

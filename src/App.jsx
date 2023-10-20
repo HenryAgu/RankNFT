@@ -10,6 +10,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import Login from "./components/auth/Login/Login";
 import ProtectedRoute from "./ProtectedRoute";
+import SignUp from "./components/SignUp";
 
 function App() {
   const [user,setUser] = useState(null);
@@ -23,6 +24,7 @@ function App() {
             <Home user={user}/>
           </ProtectedRoute>
         }/>
+        <Route path="/sign-up" element={<SignUp/>}/>
         </Routes>
       </BrowserRouter>
     </>

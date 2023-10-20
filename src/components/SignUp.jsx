@@ -1,32 +1,20 @@
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { auth } from "../firebase";
 
-// firebase
-import { auth } from "../../../firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
-
-// stylesheet
-import "./style/Login.scss";
-
-const Login = ({ setUser }) => {
+const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(false);
-
   const navigate = useNavigate();
-
-  const handleLogIn = async (e) => {
-    // todo: sign in
+  const handleSignup = (e) => {
+    // todo: sign up
     e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
+    createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log(userCredential);
-        if (email !== "" && password !== "") {
-          setUser({ email: email, password: password });
-          navigate("/gallery");
-        } else {
-          setErrorMessage(true);
-        }
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);
@@ -38,8 +26,8 @@ const Login = ({ setUser }) => {
       <h1>
         Welcome To <span>RankNFT</span>
       </h1>
-      <form onSubmit={handleLogIn}>
-        <h3>Log In</h3>
+      <form onSubmit={handleSignup}>
+        <h3>Sign Up</h3>
         <div className="inner_form">
           <label htmlFor="">Email:</label>
           <input
@@ -61,11 +49,11 @@ const Login = ({ setUser }) => {
         {errorMessage ? (
           <div className="error">Invalid Email or Password</div>
         ) : null}
-        <button type="submit">Login</button>
+        <button type="submit">Sign Up</button>
       </form>
-      <NavLink to="/sign-up">Sign Up</NavLink>
+      <NavLink to="/">login</NavLink>
     </div>
   );
 };
 
-export default Login;
+export default SignUp;
