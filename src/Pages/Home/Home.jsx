@@ -5,6 +5,8 @@ import "./style/Home.scss";
 // React beautiful
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
+import { auth } from "../../firebase";
+
 // images
 import image1 from "./images/image1.jpg";
 import image2 from "./images/image2.png";
@@ -14,9 +16,12 @@ import image5 from "./images/image5.png";
 import image6 from "./images/image6.png";
 import image7 from "./images/image7.jpg";
 import image8 from "./images/image8.jpg";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [search, setSearch] = useState("");
+  const [userAuth, setUserAuth] = useState(null);
   console.log(search);
   // images
   const images = [
@@ -69,6 +74,18 @@ const Home = () => {
     setTimeout(() => {
       setIsLoading(false);
     }, 3500);
+
+    //For user auth
+    const listen = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUserAuth(user);
+      } else {
+        setUserAuth(null);
+      }
+    });
+    return () => {
+      listen();
+    };
   }, []);
 
   //   Handle on drag end
@@ -78,6 +95,13 @@ const Home = () => {
     items.splice(result.destination.index, 0, reorderedItem);
     updateCharacters(items);
     console.log(result);
+  };
+  const navigate = useNavigate();
+  const handleSignOut = () => {
+    signOut(auth).then(()=>{
+      console.log("Signed Out!")
+      navigate("/");
+    }).catch(error => console.log(error))
   };
 
   return (
@@ -89,6 +113,14 @@ const Home = () => {
           onChange={(e) => setSearch(e.target.value)}
         />
       </div>
+      <p>
+        {userAuth ? (
+          <h4>{`Signed In as ${userAuth.email}`}</h4>
+        ) : (
+          <h4>Signed Out</h4>
+        )}
+      </p>{" "}
+      <button onClick={handleSignOut}>Sign Out</button>
       {isLoading ? (
         <div className="loader"></div>
       ) : (
